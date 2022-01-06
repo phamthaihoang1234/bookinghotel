@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- http://www.w3schools.com/bootstrap/bootstrap_ref_js_modal.asp -->
+    <!-- file goc thieu <meta charset="UTF-8"> => ko the hien thi duoc tieng Viet-->
+    <meta charset="UTF-8">
+    <title>YOY | user-signup</title>
+    <!-- bootstrap: de y' 2 file ajax phai dat truoc maxcdn thi moi dung` duoc modal (Form)-->
+    <!-- Online -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+    <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+    <!-- Offline -->
+    <link rel="stylesheet" href="../../Utilities/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <script src="../../Utilities/jQuery-1.x/jquery-1.11.3.min.js"></script>
+    <script src="../../Utilities/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+
+    <style>
+        .modal-header, h4, .close {
+            background-color: rgb(220, 30, 40);
+            color: white !important;
+            /*text-align: center;*/
+            font-size: 30px;
+        }
+
+        /*.modal-footer {*/
+        /*background-color: #f9f9f9;*/
+        /*}*/
+        .col-sm-6 li {
+            margin-top: 15px;
+        }
+
+        .modal-body .form-group {
+            padding-top: 10px;
+        }
+
+        /*Group input border*/
+        /*https://s3.amazonaws.com/codecademy-content/projects/bolt-network/homepage.html*/
+        /*<chua lay' duoc css file rieng tai modal*/
+        /*<link type="text/css" rel="stylesheet" href="../css/user.css" />*/
+        .clear-border {
+            background: transparent;
+            border: 0px;
+            border-radius: 0;
+            border-bottom: 1px solid rgb(156, 153, 153);
+            box-shadow: 0px 0px 0px;
+        }
+
+        .clear-border:hover {
+            /*border-bottom:1px solid #0393ff;*/
+        }
+
+        .clear-border:focus {
+            /*border-bottom:1px solid #0393ff;*/
+            /*outline:0px;*/
+        }
+
+        /*END Group input border*/
+    </style>
+
+    <script type="text/javascript" language="javascript">
+        //        khi thoat form ma` ko dung` &time thi so lieu van con luu (luc nay form dag an? chu' chua thoat
+        //        => so lieu van~ con` luu lai)
+        //        http://stackoverflow.com/questions/15827262/how-to-reset-form-body-in-bootstrap-modal-box
+        //        cai truc tiep' tai the? a thuoc header 1 khi click open modal
+    </script>
+
+</head>
+<body>
+<!--<h2>Modal Login Example</h2>-->
+<!-- Trigger the modal with a button -->
+<!--<button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>-->
+
+<!-- Modal -->
+<!-- da~ xoa' bot 2 div de? lien ket den' Trang chu, chi de lai. class: modal-content, modal-header, modal-body, modal-footer
+=> thieu' hieu ung' cua? cac div ben ngoai`
+-->
+<!--<div clas+s="modal fade" id="myModal" role="dialog">-->
+<!--<div class="modal-dialog" style="width: 50%">-->
+<!-- Modal content-->
+<div class="modal-content">
+    <div class="modal-header"> <!-- style="padding:35px 50px;" -->
+        <button type="button" class="close" data-dismiss="modal" id="refreshDIV" onClick="history.go(0)">&times;
+        </button>
+        <h4>THAM GIA</h4>
+    </div>
+    <!-- khi nut' click lan` 2 tro di:
+    - width cua Trangchu bi. thu nho? lai, giong nhu* Form Sign-Up
+    - modal cu~ van con` luu lai khi mo? sang modal thu' 2
+    van chua duoc thoat hoan toan` khi click X
+    how to refresh already opened page with button click [closed]
+    http://stackoverflow.com/questions/20371394/how-to-refresh-already-opened-page-with-button-click
+    them su* kien: id="refreshDIV" onClick="history.go(0)"
+    Neu' ko dung` nut' X nay` ma` bam' ra ben ngoai` de? thoat' Form thi` van~ con` bi => cai vao su* kien khi Form Unload.
+    -->
+    <!-- cai` padding (top, right, bottom, left): ko anh huong den' img -->
+    <div class="modal-body" style="padding:30px 30px 0px 30px">
+        <div class="row">
+            <div class="col-sm-6"
+                 style="margin-left: -10px; margin-top: -20px; border-right: 2px dashed rgb(246,245,245)">
+                <!--method="get" (Can not be bookmarked. | More difficult to hack) http://www.diffen.com/difference/GET_(HTTP)_vs_POST_(HTTP)-->
+                <!--mac du dac chung thu* muc nhu*ng do kich hoat tu` 1 file dat tai folder Pages, nhin` address (localhost ...) se thay -->
+                <form name="MyForm" role="form" method="get" action="modal-user/user-verify.html">
+                    <div class="form-group">
+                        <input type="text" class="form-control clear-border" id="usrname" placeholder="HỌ VÀ TÊN"
+                               required pattern="[A-Za-z]+$" title="HỌ VÀ TÊN: Vui lòng nhập ký tự A-Z, a-z">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control clear-border" id="mobilenumber"
+                               placeholder="SỐ ĐIỆN THOẠI"
+                               required pattern="[0-9]{1,10}" title="SỐ ĐIỆN THOẠI: Vui lòng nhập số (tối đa 10 số)">
+                    </div>
+                    <!--required pattern="^[0-9]+$" title="Chỉ nhập số từ 0-9">-->
+                    <!--pattern="[0]{1}[0-9]{9,12}"-->
+                    <div class="form-group">
+                        <input type="email" class="form-control clear-border" id="emailaddress"
+                               placeholder="ĐỊA CHỈ EMAIL"
+                               required title="EMAIL">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control clear-border" id="psw" placeholder="MẬT KHẨU"
+                               required>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block" style="margin-top: 30px">
+                        ĐĂNG KÝ
+                    </button>
+                    <!--sau khi đăng ký thành công sẽ xuất hiện modal verify-->
+                </form>
+            </div>
+            <div class="col-sm-6" style="margin-top: -20px; font-size: small">
+                <ul style="margin: 0; padding-left: 20px; list-style-image:url('modal-user/img_audio/Checkmark-20.png') ">
+                    <li> Tăng tốc quy trình đặt phòng</li>
+                    <li> Xem hoặc thay đổi các đặt phòng của mình</li>
+                    <li> Trở thành người đầu tiên nhận thông tin về các ưu đãi đặt biệt</li>
+                </ul>
+                <!-- dung span: noi dung ko canh deu 2 ben -->
+                <div style="margin-left: 10px; margin-top: 15px">
+                    Chúng tôi không bao giờ bán thông tin cá nhân của bạn. Vui lòng đọc
+                    <span style="color: rgb(220, 30, 40)">Chính sách bảo mật</span> của chúng tôi để biết thêm thông
+                    tin.
+                </div>
+            </div>
+        </div>
+        <!--dat trong class="modal-body"-->
+        <div style="text-align: right; margin-top: -80px; margin-right: -30px">
+            <!--mac du` dat chung thu* muc nhu*ng chay tu` file khac dag nam` tai folder Pages -->
+            <img src="modal-user/img_audio/stay-awesome.png"/>
+        </div>
+
+    </div>
+
+    <!--<div class="modal-footer">-->
+    <!--<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Hủy</button>-->
+    <!--</div>-->
+</div>
+
+<!--</div>-->
+<!--</div>-->
+
+<!-- dang dat. tai part-header1 -->
+<!-- Form Sign-Up & Log In: Ho tro link den' file Sign-up -->
+<!--<a href="Sign-up.html" data-toggle="modal" data-target="#theModal">Lab 6</a>-->
+<!--http://stackoverflow.com/questions/32958219/getting-bootstraps-modal-content-from-another-page
+http://plnkr.co/edit/Y7jDj2hORWmJ95c96qoG?p=preview
+-->
+<!--<div class="modal fade" id="theModal">-->
+<!--<div class="modal-dialog">-->
+<!--<div class="modal-content">-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+</body>
+</html>

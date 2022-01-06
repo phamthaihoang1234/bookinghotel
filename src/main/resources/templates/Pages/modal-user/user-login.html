@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- bootstrap -->
+    <!-- Online -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YOY | user-login</title>
+    <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+    <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+    <!-- Offline -->
+    <link rel="stylesheet" href="../../Utilities/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <script src="../../Utilities/jQuery-1.x/jquery-1.11.3.min.js"></script>
+    <script src="../../Utilities/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <style>
+        .modal-header, h4, .close {
+            background-color: rgb(220, 30, 40);
+            color: white !important;
+            font-size: 30px;
+        }
+
+        .col-sm-6 li {
+            margin-top: 15px;
+        }
+
+        .modal-body .form-group {
+            padding-top: 10px;
+        }
+
+        /*Group input border*/
+        .clear-border {
+            background: transparent;
+            border: 0px;
+            border-radius: 0;
+            border-bottom: 1px solid rgb(156, 153, 153);
+            box-shadow: 0px 0px 0px;
+        }
+
+        /*END Group input border*/
+        /* Social-icons (lay' ra cac' class tu` file style.css) : http://azmind.com/2015/02/05/bootstrap-social-icons/ */
+        /*azm-social*/
+        .azm-social {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            color: #fff;
+            text-align: center;
+            -moz-border-radius: 0;
+            -webkit-border-radius: 0;
+            border-radius: 0;
+            -o-transition: all .3s;
+            -moz-transition: all .3s;
+            -webkit-transition: all .3s;
+            -ms-transition: all .3s;
+            transition: all .3s;
+        }
+
+        .azm-social:hover, .azm-social:focus, .azm-social:active {
+            outline: 0;
+            opacity: 0.8;
+            color: #fff;
+        }
+
+        /*azm-btn*/
+        .azm-btn {
+            height: 48px;
+            margin: 8px;
+            padding: 0px 17px;
+            font-size: 14px;
+            line-height: 21px;
+            font-weight: 300;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+        }
+
+        .azm-btn i {
+            padding-right: 27px;
+            font-size: 21px;
+            line-height: 21px;
+            vertical-align: top;
+        }
+
+        .azm-btn i:after {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 70%;
+            width: 1px;
+            height: 36px;
+            background: #ccc;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /*azm-border-bottom*/
+        .azm-border-bottom {
+            padding-top: 12px;
+            border-bottom: 4px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /*azm-facebook*/
+        .azm-facebook {
+            background: #4862a3;
+            /*border-right: 1px solid white;*/
+        }
+    </style>
+    <script>
+
+    </script>
+</head>
+<body>
+<!-- Modal -->
+<!--<div class="modal fade" id="myModal" role="dialog">-->
+<!--<div class="modal-dialog" style="width: 50%">-->
+<!-- Modal content-->
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" id="refreshDIV" onClick="history.go(0)">&times;
+        </button>
+        <h4>ĐĂNG NHẬP</h4>
+    </div>
+    <!-- cai` padding: ko anh huong den' img -->
+    <div class="modal-body" style="padding:30px 0px 0px 30px">
+        <div class="row">
+            <div class="col-sm-6"
+                 style="margin-left: -10px; margin-top: -20px; border-right: 2px dashed rgb(246,245,245)">
+                <form role="form" onsubmit="
+                alert('ĐĂNG NHẬP THÀNH CÔNG !');
+                localStorage.check_login = 'true';
+                ">
+                    <!--co dau hieu refresh page-->
+                    <!--hien tai id welcome dag dat. tai file header1    -->
+                    <div class="form-group">
+                        <input type="text" class="form-control clear-border" id="mobilenumber"
+                               placeholder="SỐ ĐIỆN THOẠI"
+                               required pattern="[0-9]{1,10}" title="Vui lòng nhập số (tối đa 10 số)">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control clear-border" id="psw" placeholder="MẬT KHẨU"
+                               required>
+                    </div>
+                    <!--<div class="form-group">-->
+                    <div style="width: 100%; margin-top: 30px">
+                        <button type="submit" class="btn btn-success btn-block" style="width: 40%; float: left">ĐĂNG
+                            NHẬP
+                        </button>
+                        <!--<a href="forgot-password.html" data-toggle="modal" data-target="#theModal" style="color: rgb(239,64,35); float: right; font-size: 13px">-->
+                        <a onClick="history.go(0)" href="modal-user/user-resetpassword.html" target="_self"
+                           style="color: rgb(220, 30, 40); float: right; font-size: 13px">
+                            <!--chua the mo? truc tiep' tai trang chu (khi show 2 modal cung` luc)-->
+                            <!--<button type="button" class="close" data-dismiss="modal" id="refreshDIV" onClick="history.go(0)">&times;</button>-->
+                            Quên mật khẩu?
+                        </a>
+                    </div>
+
+                    <div style="margin-top: 80px; width: 100%">
+                        <input type="checkbox"/> Giữ chế độ đăng nhập
+                    </div>
+                    <a href="#" class="btn azm-social azm-btn azm-border-bottom azm-facebook"
+                       style="margin-left: 0px; margin-top: 20px">
+                        <i class="fa fa-facebook">
+                            <span style="margin-left: 10px; position: absolute">|</span>
+                        </i>
+                        Đăng nhập với Facebook
+                    </a>
+
+                </form>
+            </div>
+            <div class="col-sm-6" style="margin-top: 0px; font-size: small">
+                <span>Bạn không có tài khoản?</span>
+                <a href="#" style="color: rgb(220, 30, 40)">Đăng ký</a>
+                <!-- dung span: noi dung ko canh deu 2 ben -->
+
+            </div>
+        </div>
+        <!--dat trong class="modal-body"-->
+        <div style="text-align: right; margin-top: -80px">
+            <!--mac du` dat chung thu* muc nhu*ng chay tu` file khac dag nam` tai folder Pages -->
+            <img src="modal-user/img_audio/stay-awesome.png"/>
+        </div>
+    </div>
+</div>
+<!--</div>-->
+<!--</div>-->
+
+</body>
+</html>
